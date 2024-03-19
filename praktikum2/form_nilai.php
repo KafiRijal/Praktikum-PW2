@@ -55,15 +55,12 @@
     </form>
     <hr>
     <?php
-    $proses = $_POST['proses'];
-    $nama_siswa = $_POST['nama'];
-    $mata_kuliah = $_POST['matkul'];
-    $nilai_uts = $_POST['nilai_uts'];
-    $nilai_uas = $_POST['nilai_uas'];
-    $nilai_tugas = $_POST['nilai_tugas'];
-    $total_nilai = 0.3 * $nilai_uts + 0.35 * $nilai_uas + 0.35 * $nilai_tugas;
-    $grade = 0;
-    $predikat = 0;
+    $proses = isset($_POST['proses']) ? $_POST['proses'] : '';
+    $nama_siswa = isset($_POST['nama']) ? $_POST['nama'] : '';
+    $mata_kuliah = isset($_POST['matkul']) ? $_POST['matkul'] : '';
+    $nilai_uts = isset($_POST['nilai_uts']) ? $_POST['nilai_uts'] : '';
+    $nilai_uas = isset($_POST['nilai_uas']) ? $_POST['nilai_uas'] : '';
+    $nilai_tugas = isset($_POST['nilai_tugas']) ? $_POST['nilai_tugas'] : '';    
 
     if (!empty($proses)) {
         echo 'proses : ' . $proses;
@@ -72,12 +69,15 @@
         echo '<br/>Nilai UTS : ' . $nilai_uts;
         echo '<br/>Nilai UAS : ' . $nilai_uas;
         echo '<br/>Nilai Tugas Praktikum : ' . $nilai_tugas;
+
+        $total_nilai = 0.3 * $nilai_uts + 0.35 * $nilai_uas + 0.35 * $nilai_tugas;
         if ($total_nilai > 55) {
             echo '<br/>Status : LULUS';
         } else {
             echo '<br/>Status : TIDAK LULUS';
         }
 
+        $grade = 0;
         if ($total_nilai >= 0 && $total_nilai <= 35) {
             $grade = 'E';
         } elseif ($total_nilai >= 36 && $total_nilai <= 55) {
@@ -95,6 +95,7 @@
         }
         echo '<br/>Grade : ' . $grade;
 
+        $predikat = 0;
         switch ($grade) {
             case 'E':
                 $predikat = 'Sangat Kurang';

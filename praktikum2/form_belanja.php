@@ -80,10 +80,10 @@
 
     <hr>
     <?php
-    $proses = $_POST['proses'];
-    $customer = $_POST['customer'];
-    $produk = $_POST['produk'];
-    $jumlah = $_POST['jumlah'];
+    $proses = isset($_POST['proses']) ? $_POST['proses'] : '';
+    $customer = isset($_POST['customer']) ? $_POST['customer'] : '';
+    $produk = isset($_POST['produk']) ? $_POST['produk'] : '';
+    $jumlah = isset($_POST['jumlah']) ? $_POST['jumlah'] : '';
     $tv = 4200000;
     $kulkas = 3100000;
     $mesin_cuci = 3800000;
