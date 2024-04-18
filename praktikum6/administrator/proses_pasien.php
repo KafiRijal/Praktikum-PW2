@@ -27,34 +27,9 @@ switch ($_POST['proses']) {
         break;
     case 'Ubah':
         // Logic mengubah data
-        // Tangkap ID pasien yang akan diubah
-        $pasien_id = $_POST['pasien_id'];
-
-        // Membuat SQL untuk mengubah data pasien berdasarkan ID
-        $updatePasienSQL = "UPDATE pasien SET kode=?, nama=?, tmp_lahir=?, tgl_lahir=?, gender=?, kelurahan_id=?, email=?, alamat=? WHERE id=?";
-
-        // Tambahkan pasien_id ke dalam data untuk dieksekusi
-        $data[] = $pasien_id;
-
-        // Mendefinisikan prepare statement
-        $stmt = $dbh->prepare($updatePasienSQL);
-
-        // Eksekusi statement
-        $stmt->execute($data);
         break;
     case 'Hapus':
-        // Logic menghapus data
-        // Tangkap ID pasien yang akan dihapus
-        $pasien_id = $_POST['pasien_id'];
-
-        // Membuat SQL untuk menghapus data pasien berdasarkan ID
-        $deletePasienSQL = "DELETE FROM pasien WHERE id=?";
-
-        // Mendefinisikan prepare statement
-        $stmt = $dbh->prepare($deletePasienSQL);
-
-        // Eksekusi statement dengan menggunakan ID pasien
-        $stmt->execute([$pasien_id]);
+        // Logic menghapus datax
         break;
     default:
         header('location: ./data_pasien.php');
