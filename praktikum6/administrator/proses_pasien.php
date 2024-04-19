@@ -26,10 +26,21 @@ switch ($_POST['proses']) {
         $stmt->execute($data);
         break;
     case 'Ubah':
-        // Logic mengubah data
+        $id_pasien = $_POST['id_pasien'];
+        $updatePasienSQL = "UPDATE pasien SET kode=?, nama=?, tmp_lahir=?, tgl_lahir=?, gender=?, kelurahan_id=?, email=?, alamat=? WHERE id=?";
+
+        //menambahkan id_pasien kedalam data
+        $data[] = $id_pasien;
+
+        $stmt = $dbh->prepare($updatePasienSQL);
+
+        $stmt->execute($data);
         break;
     case 'Hapus':
-        // Logic menghapus datax
+        $id_pasien = $_POST['id_pasien'];
+        $deletePasienSQL = "DELETE FROM pasien WHERE id =?";
+        $stmt = $dbh->prepare($deletePasienSQL);
+        $stmt->execute([$id_pasien]);
         break;
     default:
         header('location: ./data_pasien.php');

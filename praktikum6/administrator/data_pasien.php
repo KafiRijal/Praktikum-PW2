@@ -64,7 +64,8 @@ $getPasien = $dbh->query($sql);
                 <td><?= $pasien['email'] ?></td>
                 <td>
                   <a href="./form_pasien.php?id=<?= $pasien['id'] ?>" class="btn btn-sm btn-warning">Ubah</a>
-                  <form action="./form_pasien.php?id=<?= $pasien['id'] ?>" method="post">
+                  <form action="proses_pasien.php" method="post">
+                    <input type="hidden" name="id_pasien" value="<?= $pasien['id'] ?>">
                     <input type="submit" name="proses" class="btn btn-sm btn-danger" value="Hapus">
                   </form>
                 </td>

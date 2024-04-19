@@ -51,6 +51,10 @@ require_once './layouts/sidebar.php';
       </div>
       <div class="card-body">
         <form method="post" action="proses_pasien.php">
+          <?php if (!empty($pasien_id)) :?>
+              <input type="hidden" name="id_pasien" value="<?= $pasien_id; ?>">
+          <?php endif;  ?>
+          <input type="hidden" >
           <div class="form-group row">
             <label for="kode" class="col-4 col-form-label">kode</label>
             <div class="col-8">
@@ -121,7 +125,6 @@ require_once './layouts/sidebar.php';
           <div class="form-group row">
             <div class="offset-4 col-8">
               <input type="submit" name="proses" id="proses" class="btn btn-primary" value="<?= $pasien_id ?'Ubah':'Simpan' ?>">
-              <!-- <button name="submit" type="submit" class="btn btn-primary">Tambah Pasien</button> -->
             </div>
           </div>
         </form>
